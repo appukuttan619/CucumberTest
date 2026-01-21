@@ -1,5 +1,6 @@
 package com.automation.stepDefinition;
 
+import com.automation.utils.ConfigReader;
 import com.automation.utils.DriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,7 +10,8 @@ public class Hooks {
     @Before
     public void setUp(){
         DriverManager.initDriver();
-        DriverManager.goToSite("https://opensource-demo.orangehrmlive.com/");
+        ConfigReader.initConfig();
+        DriverManager.goToSite(ConfigReader.getValue("base.url"));
     }
 
     @After
